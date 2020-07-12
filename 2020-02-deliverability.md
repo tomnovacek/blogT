@@ -1,14 +1,15 @@
 ---
 layout: post-layout.njk 
 title: Deliverability
-date: 2020-06-01
+date: 2020-02-01
 tags: ['post']
 ---
 # Něco na úvod
+
 <!-- Excerpt Start -->
-Ano, nikdo nechce dostávat do schránky otraný maily. ISP (Internet Service Providers) se snaží udržet svoje zákazníky a vymýšlejí, jak si udržet svoje zákazníky, že je odfiltrujou od otravů. 
+Ano, nikdo nechce dostávat do schránky otravný maily. ISP (Internet Service Providers) se snaží udržet svoje zákazníky a vymýšlejí, jak si udržet svoje zákazníky, že je odfiltrujou od otravů. 
 <!-- Excerpt End -->
-V poslední době se ale stále více setkávám s tím, že firmy mají problém doručovat releventní a pro zákazníky důležité maily. Zakazník pak marně čeká na licenční klíč, nemusí dostat mail na obnovu zapomenutého hesla nebo třeba nedostanou nabídku na produkt, který jim vyřeší jejich problém.
+V poslední době se ale stále více setkávám s tím, že firmy mají problém doručovat relevantní a pro zákazníky důležité maily. Zákazník pak marně čeká na licenční klíč, nemusí dostat mail na obnovu zapomenutého hesla nebo třeba nedostanou nabídku na produkt, který jim vyřeší jejich problém.
 Podle statistik jen 85 % legitimních emailů se dostane ke svému adresátovi ([Return Path, 2018](https://www.validity.com/resource-center/report/2018-delivery-benchmark/)). 
 
 Můžeme tedy přicházet o nemalou část obchodních příležitostí. Také kvalita služeb postavených na emailové komunikací získává trhliny. 
@@ -41,20 +42,20 @@ Nástroje pro rozesílaní emailů. Je jich celá řada. Většina nabízí mož
 * Postfix
 * SendGrid
 
-
-
 # Pro Admina
-
 
 ## Autentifikujte se  - Record, Key, Protocol
 
 ### SPF (Sender Policy Framework)
-SPF records tell an incoming server which hosts or IP addresses are allowed to send emails with a given email address. 
+
+SPF records tell an incoming server which hosts or IP addresses are allowed to send emails with a given email address.
 
 ### DKIM (DomainKeys Identified Mail)
+
 is used to validate if a given email message was sent by the owner of a given email address. It’s a digital signature that’s sent with every email message sent. It includes encrypted details such as message body or/and headers, sender’s domain and others. When an email with DKIM is received by an incoming server, it will recreate the signature with a public key and compare it against the DKIM received.
 
 ### DMARC (“Domain-based Message Authentication, Reporting & Conformance”)
+
 is an email authentication, policy, and reporting protocol. It builds on the widely deployed SPF and DKIM protocols, adding linkage to the author (“From:”) domain name, published policies for recipient handling of authentication failures, and reporting from receivers to senders, to improve and monitor protection of the domain from fraudulent email.
 [DMARC.org](https://dmarc.org) 
 [DMARC report analyzer](https://mxtoolbox.com/DmarcReportAnalyzer.aspx)
