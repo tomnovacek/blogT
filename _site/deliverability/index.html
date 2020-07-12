@@ -1,0 +1,157 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <title>Tom's Blog</title> 
+  <link rel="stylesheet" href="/css/site.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700|Roboto&display=fallback" rel="stylesheet">
+</head> 
+<body> 
+  <header>
+    <a href="/">Home</a>
+    &nbsp;&nbsp;
+    <a href="/About">About</a>
+  </header> 
+  <main> 
+    <article>
+  <h1>Deliverability</h1>
+  <time datetime="2020-06-01T00:00:00.000Z">June 1, 2020</time>
+  <h1>Něco na úvod</h1>
+<!-- Excerpt Start -->
+<p>Ano, nikdo nechce dostávat do schránky otraný maily. ISP (Internet Service Providers) se snaží udržet svoje zákazníky a vymýšlejí, jak si udržet svoje zákazníky, že je odfiltrujou od otravů.</p>
+<!-- Excerpt End -->
+<p>V poslední době se ale stále více setkávám s tím, že firmy mají problém doručovat releventní a pro zákazníky důležité maily. Zakazník pak marně čeká na licenční klíč, nemusí dostat mail na obnovu zapomenutého hesla nebo třeba nedostanou nabídku na produkt, který jim vyřeší jejich problém.
+Podle statistik jen 85 % legitimních emailů se dostane ke svému adresátovi (<a href="https://www.validity.com/resource-center/report/2018-delivery-benchmark/">Return Path, 2018</a>).</p>
+<p>Můžeme tedy přicházet o nemalou část obchodních příležitostí. Také kvalita služeb postavených na emailové komunikací získává trhliny.</p>
+<p>Co s tím? Co dělat, aby se relevantní mail dostal k tomu, kdo ho ocení?
+Zkusme shrnout pár principů se zkušeností z každodenního emailového zoufalství.
+Celý problém je poměrně komplexní, vstupuje do něho spousta proměnných. Není proto jednoduché identifikovat problém.
+Existuje ale několik pravidel, které je dobré dodržovat a kontrolovat. Je například důležité kolik posíláte mailů, jakou má doména historii, jestli používáte dedikovanou IP adresu, jak snadno umožňuje odhlásit se z mailing listu, i třeba to, co dáváte do předmětu zprávy. Ale postupně bod po bodu.</p>
+<h2>Základní pojmy, hráči a obsazení</h2>
+<h3>ISPs (Internet Service Providers)</h3>
+<p>Než ISP doručí svým zákazníkům email, prověřují kredibilitu doménových IP adres odesílatele. Hodnotí tzv. reputaci IP adresy, ze které se doručuje. Když se jim nebudete líbit, nebo budete podezřelí, mail pravděpodobně nedoručí. To ještě nemusí znamenat, že spamujete. Aby bylo jasno, o kom zde mluvíme, mezi nejvýznamnějsí ISPs patří:</p>
+<ul>
+<li>Google</li>
+<li>Outlook EUR 4.2 /mo</li>
+<li>Zoho 0 /</li>
+<li>Yahoo!</li>
+<li>Yandex</li>
+<li>AOL</li>
+<li>Mail.ru</li>
+</ul>
+<h3>ESP (email sending providers)</h3>
+<p>Nástroje pro rozesílaní emailů. Je jich celá řada. Většina nabízí možnost si prověřit schopnost doručovat v trial verzi. Pro limitovaný počet mailů bývá k dispozici i bezplatná verze slutby. Je dobré vybrat nástroj s dobrou reputací svých IP adres. Za těmito platformami stojí týmy odborníků, kteří se snaží držet kredibilitu na maximu. Zde je pár příkladů velkých hráčů na tomto poli:</p>
+<ul>
+<li>Mailgun</li>
+<li>SparkPost</li>
+<li>Sendinblue</li>
+<li>Postmark</li>
+<li>Postfix</li>
+<li>SendGrid</li>
+</ul>
+<h1>Pro Admina</h1>
+<h2>Autentifikujte se  - Record, Key, Protocol</h2>
+<h3>SPF (Sender Policy Framework)</h3>
+<p>SPF records tell an incoming server which hosts or IP addresses are allowed to send emails with a given email address.</p>
+<h3>DKIM (DomainKeys Identified Mail)</h3>
+<p>is used to validate if a given email message was sent by the owner of a given email address. It’s a digital signature that’s sent with every email message sent. It includes encrypted details such as message body or/and headers, sender’s domain and others. When an email with DKIM is received by an incoming server, it will recreate the signature with a public key and compare it against the DKIM received.</p>
+<h3>DMARC (“Domain-based Message Authentication, Reporting &amp; Conformance”)</h3>
+<p>is an email authentication, policy, and reporting protocol. It builds on the widely deployed SPF and DKIM protocols, adding linkage to the author (“From:”) domain name, published policies for recipient handling of authentication failures, and reporting from receivers to senders, to improve and monitor protection of the domain from fraudulent email.
+<a href="https://dmarc.org">DMARC.org</a>
+<a href="https://mxtoolbox.com/DmarcReportAnalyzer.aspx">DMARC report analyzer</a></p>
+<p>Analýza hlaviček
+https://docs.microsoft.com/cs-cz/microsoft-365/security/office-365-security/anti-spam-message-headers?view=o365-worldwide
+nástroje:</p>
+<p>https://mxtoolbox.com/EmailHeaders.aspx</p>
+<h2>Prověřujte zpětnou vazbu od ISPs</h2>
+<h2>Zvažte dedikovanou IP adresu</h2>
+<h2>Zvažte [List-unsubscribe]</h2>
+<p>(https://help.returnpath.com/hc/en-us/articles/222445307-What-is-the-List-Unsubscribe-header-) do hlavičky mailu
+Návod k nastavení je <a href="https://help.returnpath.com/hc/en-us/articles/222445367-How-to-implement-the-List-Unsubscribe-header">zde</a>
+Jen je potřeba dát pozor na to, aby byl unsubscribe okamžitě zprocesován.
+Také je třeba brát v úvahu fakt, že ne všichni klienti podporují http i mailto variantu. Více například <a href="https://litmus.com/blog/the-ultimate-guide-to-list-unsubscribe">zde</a></p>
+<h1>Pro Email marketera</h1>
+<p>Tady to bude vypadat trochu banálně. Budete vám připadat, že to je logický. U většiny bodů si možná řeknete, že to tak i děláte. Jo, asi je to tak. Jsou to přesto body, ke kterým je dobré se opakovaně vracet a nastavovat si zrcadlo. Reputaci si budujete dlouho a poškodit se dá velmi rychle.</p>
+<h2>Dobře se starejte o svůj mailing list</h2>
+<p>Posílejte maily jen těm, kteří dali najevo, že je chtějí.
+Pravidelně mailing list udržujte.
+Neschovávejte možnost se odhlásit
+Zvažte double opt-in</p>
+<h2>Posílejte pravidelně a konzistentně</h2>
+<p>Pravidelnost, hodina, postupné navyšování
+Personifikujte
+Přivítejte
+Nevymýšlejte spamové texty do předmětu zprávy
+Posílejte relevantní obsah, segmentujte
+Pokud nejste velká korporace neposílejte no-reply emails</p>
+<h2>Sledujte svoji reputaci</h2>
+<h3>Co ovlivňuje reputaci</h3>
+<p>Technické parametry
+Stížnosti - snažte se je držet pod 0,2 %
+Počet neznámých adres v mailing listu
+Výskyt na blacklistu
+Statistiky user engagementu</p>
+<p>Bayes spam filtering <a href="https://blog.malwarebytes.com/security-world/2017/02/explained-bayesian-spam-filtering/">Short explanation and easy tricks how to bypass</a>
+SVM Spam Filter <a href="http://www.fun.ac.jp/~niimi/ronbun/TUE-3-3.pdf">Evaluation of both</a></p>
+<p><a href="https://www.sciencedirect.com/science/article/pii/S2405844018353404">Machine Learnign Techniques</a></p>
+<p>Postmaster <a href="https://sendpulse.com/blog/how-postmasters-work">Jak to funguje</a></p>
+<h3>Kde ověřit</h3>
+<p>SenderScore
+Talos
+<a href="https://isnotspam.com">ISnotSPAM</a>s
+služba https://spamassassin.apache.org/
+Apache SpamAssassin is the #1 Open Source anti-spam platform giving system administrators a filter to classify email and block spam (unsolicited bulk email).
+It uses a robust scoring framework and plug-ins to integrate a wide range of advanced heuristic and statistical analysis tests on email headers and body text including text analysis, <a href="https://blog.malwarebytes.com/security-world/2017/02/explained-bayesian-spam-filtering/">Bayesian filtering</a>, DNS blocklists, and collaborative filtering databases.</p>
+<p>http://www.reputationauthority.org/
+https://talosintelligence.com/reputation_center/</p>
+<h3>Co s tím dělat</h3>
+<p>Analyzovat error code
+Napsat trouble ticket
+Registrovat se k získávání zpětné vazby od ISPs
+Poslat požadavek na zapsání na whitelist</p>
+<p>Zkusit urychlovač https://ipwarmup.com/</p>
+<h3>Přístup vybraných ISPs</h3>
+<p>Outlook
+<a href="https://sendersupport.olc.protection.outlook.com/pm/services.aspx#Section1">Služby pro odesílatele</a>
+SNDS
+JMRP</p>
+<blockquote>
+<p>Smart Network Data Services (SNDS) and the Junk Mail Reporting Program (JMRP) are two services Outlook.com provides for email senders to receive feedback on their mail. SNDS provides an overview of your IP addresses, and shows relevant statistics like approximate inbox rate, complaint rate, and trap hits. JMRP lets you set up a feedback loop, so you can receive copies of messages Outlook.com users mark as junk.
+<a href="https://sendersupport.olc.protection.outlook.com/snds/JMRP.aspx">join page</a></p>
+</blockquote>
+<p>Google
+AOL</p>
+<p>hosting service
+<code>dig MX &lt;server name&gt;</code></p>
+<h2>Pravidelně testujte doručitelnost</h2>
+<p>https://blog.mailtrap.io/test-email-deliverability/
+https://blog.mailtrap.io/email-testing-checklist/</p>
+<ul>
+<li><a href="https://mxtoolbox.com/Pro/#/">MX Toolbox</a>
+https://spam-check.glockapps.com/</li>
+</ul>
+<h2>Používejte nástroje na trackování emailů</h2>
+<h2>Dedikovaná IP adresa?</h2>
+<blockquote>
+<p>50 tis. mailů týdně</p>
+</blockquote>
+<h1>Realná zkušenost</h1>
+<p>Po registraci žádná změna. Doručitelnost na outlook se zásadním způsobem nezměnila. A informace o zařazování do spamu jsme měli pořád stejné, tedy žádné.</p>
+<p>Udělali jsme si závěr, že u malého počtu emailů je reputace daného serveru neznámá. Microsoft má v současné době opatrnou strategii. A maily od neznámých domén raději nedoručuje, i když na ně neexistují relevantní stížnosti.</p>
+<p>Viz podobná diskuse a závěry <a href="https://serverfault.com/questions/896143/emails-are-constantly-marked-by-outlook-com-as-spam">zde</a></p>
+<h1>Shrnutí a best practice</h1>
+<p>Záleží na počtu emailů Reputace</p>
+<p>Zdroje:</p>
+<p><a href="https://www.validity.com/blog/feedback-loops-all-about-being-in-the-loop/">Feedback loops</a></p>
+<p><a href="https://jellymetrics.com/improving-email-deliverability/">11 Secret Ways of Improving... - Jellymetrics</a></p>
+<p><a href="https://pages.returnpath.com/email-sending-best-practices.html">Best practices - Returnpath</a></p>
+<p><a href="https://www.sparkpost.com/blog/6-rules-maximum-outlook-deliverability/">6 rules - Sparkpost</a></p>
+<p><a href="https://blog.mailtrap.io/email-deliverability/">Ultimate Email Deliverability Guide</a></p>
+<p><a href="https://blog.malwarebytes.com/security-world/2017/02/explained-bayesian-spam-filtering/">Pieter Arntz</a></p>
+
+</article>
+  </main> 
+  <footer>&copy;Tom and Eleventy</footer> 
+</body> 
+</html>
